@@ -25,7 +25,7 @@ JOIN "customers" ON "customers"."id" = "addresses"."customer_id"
 GROUP BY "customers"."id";
 
 --How many customers do we have?
-
+SELECT COUNT(*) FROM "customers";
 
 
 --How many products do we carry?
@@ -33,6 +33,9 @@ SELECT count(*) FROM "products";
 
 
 --What is the total available on-hand quantity of diet pepsi?
-
+SELECT "products"."description" , sum(on_hand) FROM "warehouse_product"
+JOIN "products" ON "products"."id" = "warehouse_product"."product_id"
+WHERE "products"."description" = 'diet pepsi'
+GROUP BY "products"."description";
 
 
